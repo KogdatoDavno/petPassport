@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://t7m3wckofau3"]
+
+[ext_resource type="PackedScene" uid="uid://b0cpqp1okutu4" path="res://scenes/ui_catalog_card.tscn" id="1_krtv4"]
+[ext_resource type="Script" path="res://scenes/CardsCatalog.gd" id="1_svepw"]
+
+[node name="catalog" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_svepw")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="CardsContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card" parent="ScrollContainer/CardsContainer" instance=ExtResource("1_krtv4")]
+layout_mode = 2

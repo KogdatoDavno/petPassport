@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0cpqp1okutu4"]
+
+[ext_resource type="Script" path="res://scripts/ui_catalog_card.gd" id="1_e0whf"]
+
+[node name="Card" type="HBoxContainer" groups=["catalog_cards"]]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 200.0
+grow_horizontal = 2
+script = ExtResource("1_e0whf")
+
+[node name="photo" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="label_container" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="label_container"]
+layout_mode = 2
+text = "Name of pet"
+
+[node name="Age" type="Label" parent="label_container"]
+layout_mode = 2
+text = "Age of pet"
+
+[node name="Chip_ID" type="Label" parent="label_container"]
+layout_mode = 2
+text = "Chip ID"
+
+[node name="Passport_ID" type="Label" parent="label_container"]
+layout_mode = 2
+text = "Passport ID"
+
+[node name="DB_ID" type="Label" parent="label_container"]
+layout_mode = 2
+text = "DB ID"
+
+[node name="button_container" type="HBoxContainer" parent="label_container"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="open_card" type="Button" parent="label_container/button_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Открыть запись"
+
+[node name="delete_card" type="Button" parent="label_container/button_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+text = "Удалить запись"
+
+[connection signal="pressed" from="label_container/button_container/delete_card" to="." method="_on_delete_card_pressed"]

@@ -1,0 +1,268 @@
+[gd_scene load_steps=4 format=3 uid="uid://1qvvnr35to2j"]
+
+[ext_resource type="Script" path="res://scripts/ui_add_pet.gd" id="1_w3frn"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_t7iyh"]
+
+[sub_resource type="SyntaxHighlighter" id="SyntaxHighlighter_h3myl"]
+
+[node name="ui_add_pet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w3frn")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="nav_bar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="return" type="Button" parent="MarginContainer/VBoxContainer/nav_bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "< Вернуться"
+
+[node name="add_pet" type="Button" parent="MarginContainer/VBoxContainer/nav_bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Добавить запись"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="fields" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="important" type="Label" parent="MarginContainer/VBoxContainer/fields"]
+layout_mode = 2
+text = "Под * указаны обязательные поля для заполнения"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/fields"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 25
+columns = 2
+
+[node name="name_field" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+text = "Имя питомца*: "
+
+[node name="name_line" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Например, Doggy"
+max_length = 32
+
+[node name="age_field" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+text = "Дата рождения*:"
+
+[node name="age_line" type="HBoxContainer" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="day_of_birth" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer/age_line"]
+layout_mode = 2
+text = "День: "
+
+[node name="DD" type="OptionButton" parent="MarginContainer/VBoxContainer/fields/GridContainer/age_line"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 1
+allow_reselect = true
+popup/item_0/text = ""
+popup/item_0/id = 0
+
+[node name="month_of_birth" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer/age_line"]
+layout_mode = 2
+text = "Месяц: "
+
+[node name="MM" type="OptionButton" parent="MarginContainer/VBoxContainer/fields/GridContainer/age_line"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 1
+allow_reselect = true
+popup/item_0/text = ""
+popup/item_0/id = 0
+
+[node name="year_of_birth" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer/age_line"]
+layout_mode = 2
+text = "Год: "
+
+[node name="YY" type="OptionButton" parent="MarginContainer/VBoxContainer/fields/GridContainer/age_line"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 1
+allow_reselect = true
+popup/item_0/text = ""
+popup/item_0/id = 0
+
+[node name="chip_id_field" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+text = "ID чипа: "
+
+[node name="chip_lines" type="HBoxContainer" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+
+[node name="chip_serial" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer/chip_lines"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Серия"
+max_length = 8
+virtual_keyboard_type = 2
+
+[node name="chip_number" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer/chip_lines"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Номер"
+max_length = 32
+virtual_keyboard_type = 2
+
+[node name="passport_id_field" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+text = "ID пасспорта:"
+
+[node name="passport_lines" type="HBoxContainer" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+
+[node name="passport_serial" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer/passport_lines"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Серия"
+max_length = 8
+virtual_keyboard_type = 2
+
+[node name="passport_number" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer/passport_lines"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Номер"
+max_length = 32
+virtual_keyboard_type = 2
+
+[node name="add_photo" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+text = "Загрузить фотографию"
+
+[node name="photo_picker" type="VBoxContainer" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="fd_popup" type="FileDialog" parent="MarginContainer/VBoxContainer/fields/GridContainer/photo_picker"]
+mode = 2
+title = "Open a File"
+initial_position = 2
+size = Vector2i(407, 650)
+borderless = true
+min_size = Vector2i(350, 650)
+max_size = Vector2i(415, 800)
+ok_button_text = "Открыть"
+cancel_button_text = "Отмена"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.jpg, *.png")
+show_hidden_files = true
+use_native_dialog = true
+
+[node name="photo_rect" type="TextureRect" parent="MarginContainer/VBoxContainer/fields/GridContainer/photo_picker"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ImageTexture_t7iyh")
+
+[node name="photo_path" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer/photo_picker"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Не выбрано"
+horizontal_alignment = 1
+
+[node name="fd_button" type="Button" parent="MarginContainer/VBoxContainer/fields/GridContainer/photo_picker"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Выбрать фото"
+
+[node name="breed" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+text = "Порода"
+
+[node name="breed_line" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+placeholder_text = "Например, английский поинтер"
+max_length = 64
+
+[node name="color" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+text = "Окрас"
+
+[node name="color_line" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+placeholder_text = "Например, вороной"
+max_length = 32
+
+[node name="sex" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+text = "Пол"
+
+[node name="sex_picker" type="HBoxContainer" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+
+[node name="m" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer/sex_picker"]
+layout_mode = 2
+text = "муж
+"
+
+[node name="m_picker" type="CheckBox" parent="MarginContainer/VBoxContainer/fields/GridContainer/sex_picker"]
+layout_mode = 2
+alignment = 2
+
+[node name="f" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer/sex_picker"]
+layout_mode = 2
+text = "жен"
+
+[node name="f_picker" type="CheckBox" parent="MarginContainer/VBoxContainer/fields/GridContainer/sex_picker"]
+layout_mode = 2
+alignment = 2
+
+[node name="special_characteristics" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Особые приметы"
+
+[node name="characteristics_field" type="TextEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Любые важные заметки о животном: поведенческие особенности, особенности питания, любимые игрушки и т.д."
+wrap_mode = 1
+caret_blink = true
+syntax_highlighter = SubResource("SyntaxHighlighter_h3myl")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/nav_bar/return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/nav_bar/add_pet" to="." method="_on_add_pet_pressed"]
+[connection signal="file_selected" from="MarginContainer/VBoxContainer/fields/GridContainer/photo_picker/fd_popup" to="." method="_on_fd_popup_file_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/fields/GridContainer/photo_picker/fd_button" to="." method="_on_fd_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/fields/GridContainer/sex_picker/m_picker" to="." method="_on_m_picker_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/fields/GridContainer/sex_picker/f_picker" to="." method="_on_f_picker_pressed"]

@@ -1,0 +1,190 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlw817wnnxbug"]
+
+[ext_resource type="Script" path="res://ui_pet_card.gd" id="1_ugj3e"]
+
+[node name="ui_pet_card" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+script = ExtResource("1_ugj3e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="top_bar" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="return" type="Button" parent="VBoxContainer/top_bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "< Вернуться"
+
+[node name="edit" type="Button" parent="VBoxContainer/top_bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Редактировать основную информацию"
+
+[node name="main_info" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+split_offset = 25
+
+[node name="photo" type="TextureRect" parent="VBoxContainer/main_info"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="labels_container" type="VBoxContainer" parent="VBoxContainer/main_info"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "Name
+"
+
+[node name="breed" type="Label" parent="VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "Breed"
+
+[node name="sex" type="Label" parent="VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "Sex"
+
+[node name="date" type="Label" parent="VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "Date of birth DD.MM.YY"
+
+[node name="color" type="Label" parent="VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "color"
+
+[node name="chip_id" type="Label" parent="VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "Chip ID"
+
+[node name="passport_id" type="Label" parent="VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "Passport ID"
+
+[node name="med_info_buttons" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="box1" type="VBoxContainer" parent="VBoxContainer/med_info_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="meds" type="Button" parent="VBoxContainer/med_info_buttons/box1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "История препаратов"
+
+[node name="vaccination" type="Button" parent="VBoxContainer/med_info_buttons/box1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "История вакцинаций"
+
+[node name="box2" type="VBoxContainer" parent="VBoxContainer/med_info_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="illness" type="Button" parent="VBoxContainer/med_info_buttons/box2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "История болезней"
+
+[node name="suspects" type="Button" parent="VBoxContainer/med_info_buttons/box2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Особые приметы"
+
+[node name="meds_history" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+columns = 4
+
+[node name="add_meds" type="Button" parent="VBoxContainer/meds_history"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "+"
+
+[node name="date_of_meds" type="Label" parent="VBoxContainer/meds_history"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Дата"
+
+[node name="meds_name" type="Label" parent="VBoxContainer/meds_history"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Препарат"
+
+[node name="additional" type="Label" parent="VBoxContainer/meds_history"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Дополнительно"
+
+[node name="vaccination_history" type="GridContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 15
+columns = 4
+
+[node name="add_vaccination" type="Button" parent="VBoxContainer/vaccination_history"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "+"
+
+[node name="date_of_vaccination" type="Label" parent="VBoxContainer/vaccination_history"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Дата"
+
+[node name="vaccination_name" type="Label" parent="VBoxContainer/vaccination_history"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Вакцинация"
+
+[node name="additional" type="Label" parent="VBoxContainer/vaccination_history"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Дополнительно"
+
+[node name="illness_history" type="GridContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 15
+columns = 4
+
+[node name="add_illness" type="Button" parent="VBoxContainer/illness_history"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "+"
+
+[node name="date_of_illness" type="Label" parent="VBoxContainer/illness_history"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Дата"
+
+[node name="illness_name" type="Label" parent="VBoxContainer/illness_history"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Болезнь"
+
+[node name="additional" type="Label" parent="VBoxContainer/illness_history"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Дополнительно"
+
+[node name="suspects_text" type="RichTextLabel" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/med_info_buttons/box1/meds" to="." method="_on_meds_pressed"]
+[connection signal="pressed" from="VBoxContainer/med_info_buttons/box1/vaccination" to="." method="_on_vaccination_pressed"]
+[connection signal="pressed" from="VBoxContainer/med_info_buttons/box2/illness" to="." method="_on_illness_pressed"]
+[connection signal="pressed" from="VBoxContainer/med_info_buttons/box2/suspects" to="." method="_on_suspects_pressed"]
+[connection signal="pressed" from="VBoxContainer/meds_history/add_meds" to="." method="_on_add_meds_pressed"]
