@@ -1,6 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://1qvvnr35to2j"]
+[gd_scene load_steps=11 format=3 uid="uid://1qvvnr35to2j"]
 
+[ext_resource type="Theme" uid="uid://qugujeycrfoe" path="res://styles/main_theme.tres" id="1_4ekdt"]
 [ext_resource type="Script" path="res://scripts/ui_add_pet.gd" id="1_w3frn"]
+[ext_resource type="Texture2D" uid="uid://cc5p4246r3wql" path="res://icons/logo_192.png" id="3_sro7j"]
+[ext_resource type="FontFile" uid="uid://bxgt0jqhv0x0i" path="res://fonts/ttf/JetBrainsMono-ExtraBold.ttf" id="4_pq7e7"]
+[ext_resource type="FontFile" uid="uid://b23rswim4tpw2" path="res://fonts/ttf/JetBrainsMono-Thin.ttf" id="5_ib54y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qy7fb"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_rfj8v"]
+font = ExtResource("4_pq7e7")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cfykv"]
+font = ExtResource("5_ib54y")
+font_size = 10
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ImageTexture" id="ImageTexture_t7iyh"]
 
@@ -13,8 +34,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4ekdt")
 script = ExtResource("1_w3frn")
 metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,15 +62,48 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 30
+
+[node name="name" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/name"]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qy7fb")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2/name/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("3_sro7j")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pet Passport"
+label_settings = SubResource("LabelSettings_rfj8v")
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Предварительная версия"
+label_settings = SubResource("LabelSettings_cfykv")
+horizontal_alignment = 2
+
 [node name="nav_bar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="return" type="Button" parent="MarginContainer/VBoxContainer/nav_bar"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "< Вернуться"
 
 [node name="add_pet" type="Button" parent="MarginContainer/VBoxContainer/nav_bar"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Добавить запись"
@@ -61,7 +124,8 @@ horizontal_alignment = 1
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/fields"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/h_separation = 25
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
 columns = 2
 
 [node name="name_field" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
@@ -69,6 +133,7 @@ layout_mode = 2
 text = "Имя питомца*: "
 
 [node name="name_line" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Например, Doggy"
@@ -87,6 +152,7 @@ layout_mode = 2
 text = "День: "
 
 [node name="DD" type="OptionButton" parent="MarginContainer/VBoxContainer/fields/GridContainer/age_line"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 1
@@ -99,6 +165,7 @@ layout_mode = 2
 text = "Месяц: "
 
 [node name="MM" type="OptionButton" parent="MarginContainer/VBoxContainer/fields/GridContainer/age_line"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 1
@@ -111,6 +178,7 @@ layout_mode = 2
 text = "Год: "
 
 [node name="YY" type="OptionButton" parent="MarginContainer/VBoxContainer/fields/GridContainer/age_line"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 1
@@ -126,6 +194,7 @@ text = "ID чипа: "
 layout_mode = 2
 
 [node name="chip_serial" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer/chip_lines"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Серия"
@@ -133,6 +202,7 @@ max_length = 8
 virtual_keyboard_type = 2
 
 [node name="chip_number" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer/chip_lines"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Номер"
@@ -147,6 +217,7 @@ text = "ID пасспорта:"
 layout_mode = 2
 
 [node name="passport_serial" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer/passport_lines"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Серия"
@@ -154,6 +225,7 @@ max_length = 8
 virtual_keyboard_type = 2
 
 [node name="passport_number" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer/passport_lines"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Номер"
@@ -172,16 +244,14 @@ size_flags_horizontal = 3
 mode = 2
 title = "Open a File"
 initial_position = 2
-size = Vector2i(407, 650)
+size = Vector2i(327, 154)
+transient = false
 borderless = true
-min_size = Vector2i(350, 650)
-max_size = Vector2i(415, 800)
 ok_button_text = "Открыть"
+dialog_hide_on_ok = true
 cancel_button_text = "Отмена"
 file_mode = 0
 access = 2
-filters = PackedStringArray("*.jpg, *.png")
-show_hidden_files = true
 use_native_dialog = true
 
 [node name="photo_rect" type="TextureRect" parent="MarginContainer/VBoxContainer/fields/GridContainer/photo_picker"]
@@ -198,6 +268,7 @@ text = "Не выбрано"
 horizontal_alignment = 1
 
 [node name="fd_button" type="Button" parent="MarginContainer/VBoxContainer/fields/GridContainer/photo_picker"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -208,6 +279,7 @@ layout_mode = 2
 text = "Порода"
 
 [node name="breed_line" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 placeholder_text = "Например, английский поинтер"
 max_length = 64
@@ -217,6 +289,7 @@ layout_mode = 2
 text = "Окрас"
 
 [node name="color_line" type="LineEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 placeholder_text = "Например, вороной"
 max_length = 32
@@ -227,6 +300,7 @@ text = "Пол"
 
 [node name="sex_picker" type="HBoxContainer" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="m" type="Label" parent="MarginContainer/VBoxContainer/fields/GridContainer/sex_picker"]
 layout_mode = 2
@@ -234,6 +308,7 @@ text = "муж
 "
 
 [node name="m_picker" type="CheckBox" parent="MarginContainer/VBoxContainer/fields/GridContainer/sex_picker"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 alignment = 2
 
@@ -242,6 +317,7 @@ layout_mode = 2
 text = "жен"
 
 [node name="f_picker" type="CheckBox" parent="MarginContainer/VBoxContainer/fields/GridContainer/sex_picker"]
+custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 alignment = 2
 
@@ -251,7 +327,7 @@ size_flags_vertical = 0
 text = "Особые приметы"
 
 [node name="characteristics_field" type="TextEdit" parent="MarginContainer/VBoxContainer/fields/GridContainer"]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

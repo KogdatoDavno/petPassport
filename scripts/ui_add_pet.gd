@@ -1,6 +1,7 @@
 extends Control
 
 var change_scene = load("res://scenes/ui_catalog.tscn")
+var framed_avatar_path = "user://petsPhotos/framed_avatar.data"
 
 @onready var name_line : LineEdit = $MarginContainer/VBoxContainer/fields/GridContainer/name_line
 @onready var age_dd_option : OptionButton = $MarginContainer/VBoxContainer/fields/GridContainer/age_line/DD
@@ -18,6 +19,7 @@ var change_scene = load("res://scenes/ui_catalog.tscn")
 @onready var fd_popup : FileDialog = $MarginContainer/VBoxContainer/fields/GridContainer/photo_picker/fd_popup
 @onready var photo_path : Label = $MarginContainer/VBoxContainer/fields/GridContainer/photo_picker/photo_path
 @onready var photo_rect = $MarginContainer/VBoxContainer/fields/GridContainer/photo_picker/photo_rect
+@onready var important_label : Label = $MarginContainer/VBoxContainer/fields/important
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,45 +46,48 @@ func set_properties_for_option_buttons():
 	age_yy_option.remove_item(0)
 
 func upload_and_update_photo(path : String):
-	#200 пикселей - это ширина квадрата картинки
+	#250 пикселей - это ширина квадрата картинки
 	var new_image = Image.load_from_file(path)
 	
 	if new_image.get_height() > new_image.get_width():
-		new_image.resize(200, 200*new_image.get_height()/new_image.get_width())
-		new_image.crop(200,200)
+		new_image.resize(250, 250*new_image.get_height()/new_image.get_width())
+		new_image.crop(250,250)
 	elif new_image.get_height() < new_image.get_width():
-		new_image.resize(200*new_image.get_width()/new_image.get_height(), 200)
-		new_image.crop(200,200)
+		new_image.resize(250*new_image.get_width()/new_image.get_height(), 250)
+		new_image.crop(250,250)
 	else :
-		new_image.resize(200, 200)
-	new_image.save_jpg("res://petsPhotos/framed_avatar.jpg", 1.0)
-	
+		new_image.resize(250, 250)
+
 	var new_texture = ImageTexture.create_from_image(new_image)
 	photo_rect.set_texture(new_texture)
+	SaveAndLoad.save_file_to_sys(framed_avatar_path, new_texture)
+
 
 
 func _on_add_pet_pressed():
-	var new_avatar = Image.load_from_file("res://petsPhotos/framed_avatar.jpg")
-	new_avatar.save_jpg("res://petsPhotos/avatar_" + name_line.get_text() + ".jpg")
-	var new_texture = ImageTexture.create_from_image(new_avatar)
+	var new_resource_path : String = ""
+
+	var date_of_birth = {"year" : age_yy_option.get_item_text(age_yy_option.selected) as int, 
+	"month" : age_mm_option.get_item_text(age_mm_option.selected) as int, 
+	"day" : age_dd_option.get_item_text(age_dd_option.selected) as int}
 	
-	var new_resource_path = "res://petsPhotos/avatar_" + name_line.get_text() + ".tres"
-	# Сохранение ImageTexture как ресурс
-	var result = ResourceSaver.save(new_texture, new_resource_path)
-	if result == OK:
-		print("ImageTexture успешно сохранен как ресурс.")
-	else:
-		print("Ошибка при сохранении ImageTexture: ", result)
-	
-	var date_of_birth = [age_dd_option.get_item_text(age_dd_option.selected) as int, 
-	age_mm_option.get_item_text(age_mm_option.selected) as int, 
-	age_yy_option.get_item_text(age_yy_option.selected) as int]
 	var sex = func():
 		if sex_f_picker.button_pressed : return "жен"
 		elif sex_m_picker.button_pressed : return "муж"
-		else : return "NULL"
+		else : return "undefiend"
 	
-	if !name_line.get_text().is_empty() and age_dd_option.selected > -1 and age_mm_option.selected > -1 and age_yy_option.selected > -1:
+	if !name_line.get_text().is_empty() and age_dd_option.selected != -1 and age_mm_option.selected != -1 and age_yy_option.selected != -1:
+		
+		if FileAccess.file_exists(framed_avatar_path):
+			var framed_avatar_buffer = SaveAndLoad.load_file_from_sys(framed_avatar_path)
+			new_resource_path = "user://petsPhotos/avatar_" + name_line.get_text() + ".data"
+			if !(framed_avatar_buffer is ImageTexture):
+				push_error("Cant load file buffer of a framed_avatar, framed_avatar is empty")
+			else:
+				SaveAndLoad.save_file_to_sys(new_resource_path, framed_avatar_buffer)
+		else:
+			push_error("Cant add pets avatar because of failure to find a framed_avatar")
+
 		PetsData.add_pet(
 			name_line.get_text(),
 			breed_line.get_text(),
@@ -96,11 +101,11 @@ func _on_add_pet_pressed():
 			characteristics_field.get_text(),
 			new_resource_path
 			)
+		PetsData.save_data()
+		get_tree().change_scene_to_packed(change_scene)
 	else :
+		important_label.add_theme_color_override("font_color", Color.ORANGE)
 		push_error("не выбрали все обязательные поля")
-		
-	PetsData.save_data()
-	get_tree().change_scene_to_packed(change_scene)
 
 func _on_return_pressed():
 	get_tree().change_scene_to_packed(change_scene)
