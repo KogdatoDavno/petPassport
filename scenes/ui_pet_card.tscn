@@ -150,9 +150,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="name" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "Name"
 label_settings = SubResource("LabelSettings_mq41v")
+autowrap_mode = 3
 
 [node name="breed" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
 layout_mode = 2
@@ -179,11 +181,13 @@ layout_mode = 2
 text = "Окрас: "
 
 [node name="chip_id" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "ID чипа: "
 autowrap_mode = 2
 
 [node name="passport_id" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "ID паспорта: "
 autowrap_mode = 2
@@ -485,14 +489,14 @@ theme_override_fonts/font = ExtResource("4_2hebh")
 theme_override_font_sizes/font_size = 16
 text = "#"
 
-[node name="date_of_meds" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/meds_history_columns"]
+[node name="date_of" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/meds_history_columns"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_2hebh")
 theme_override_font_sizes/font_size = 16
 text = "Дата"
 
-[node name="meds_name" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/meds_history_columns"]
+[node name="name" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/meds_history_columns"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_2hebh")
@@ -526,19 +530,19 @@ theme_override_fonts/font = ExtResource("4_2hebh")
 theme_override_font_sizes/font_size = 16
 text = "#"
 
-[node name="date_of_meds" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/vaccination_history_columns"]
+[node name="date_of" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/vaccination_history_columns"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_2hebh")
 theme_override_font_sizes/font_size = 16
 text = "Дата"
 
-[node name="meds_name" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/vaccination_history_columns"]
+[node name="name" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/vaccination_history_columns"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_2hebh")
 theme_override_font_sizes/font_size = 16
-text = "Обработка"
+text = "Вакцинация"
 
 [node name="additional" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/vaccination_history_columns"]
 layout_mode = 2
@@ -561,19 +565,19 @@ theme_override_fonts/font = ExtResource("4_2hebh")
 theme_override_font_sizes/font_size = 16
 text = "#"
 
-[node name="date_of_meds" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/illnesses_history_columns"]
+[node name="date_of" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/illnesses_history_columns"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_2hebh")
 theme_override_font_sizes/font_size = 16
 text = "Дата"
 
-[node name="meds_name" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/illnesses_history_columns"]
+[node name="name" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/illnesses_history_columns"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_2hebh")
 theme_override_font_sizes/font_size = 16
-text = "Обработка"
+text = "Болезнь"
 
 [node name="additional" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/illnesses_history_columns"]
 layout_mode = 2
