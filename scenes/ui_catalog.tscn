@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://1ftxrm0klyol"]
+
+[ext_resource type="Texture2D" uid="uid://cc5p4246r3wql" path="res://icons/logo_192.png" id="1_q8qx7"]
+[ext_resource type="PackedScene" uid="uid://bt3bohen8fmi2" path="res://scenes/ui_topbar.tscn" id="1_secmj"]
+[ext_resource type="PackedScene" uid="uid://t7m3wckofau3" path="res://scenes/ui_catalog_of_cards.tscn" id="2_dxee8"]
+[ext_resource type="FontFile" uid="uid://b23rswim4tpw2" path="res://fonts/ttf/JetBrainsMono-Thin.ttf" id="2_fkhk1"]
+[ext_resource type="FontFile" uid="uid://bxgt0jqhv0x0i" path="res://fonts/ttf/JetBrainsMono-ExtraBold.ttf" id="2_k6spu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tm4ac"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_16xfs"]
+font = ExtResource("2_k6spu")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5q7ys"]
+font = ExtResource("2_fkhk1")
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[node name="ui_catalog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+
+[node name="name" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer/name"]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tm4ac")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/name/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_q8qx7")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pet Passport"
+label_settings = SubResource("LabelSettings_16xfs")
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Предварительная версия"
+label_settings = SubResource("LabelSettings_5q7ys")
+horizontal_alignment = 2
+
+[node name="topbar" parent="VBoxContainer" instance=ExtResource("1_secmj")]
+layout_mode = 2
+
+[node name="catalog" parent="VBoxContainer" instance=ExtResource("2_dxee8")]
+layout_mode = 2

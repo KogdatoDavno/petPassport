@@ -1,0 +1,62 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://qugujeycrfoe"]
+
+[ext_resource type="FontFile" uid="uid://c7qp425ptyvew" path="res://fonts/ttf/JetBrainsMono-Regular.ttf" id="1_oca07"]
+[ext_resource type="StyleBox" uid="uid://b8qes22ngeyc1" path="res://styles/flat_button_hover.tres" id="2_mmqqh"]
+[ext_resource type="StyleBox" uid="uid://76qg807q7uhq" path="res://styles/flat_line_edit.tres" id="3_m0sj8"]
+[ext_resource type="FontFile" uid="uid://fs6a62h713oy" path="res://fonts/ttf/JetBrainsMonoNL-Regular.ttf" id="4_r1hyl"]
+[ext_resource type="StyleBox" uid="uid://besi4n5fmh5ok" path="res://styles/flat_option_button_hover.tres" id="5_gp7df"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr5mm"]
+content_margin_left = 5.0
+bg_color = Color(0.252027, 0.252028, 0.252027, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s08h0"]
+content_margin_left = 5.0
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hksyd"]
+content_margin_left = 5.0
+bg_color = Color(0.709804, 0.709804, 0.709804, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+Button/colors/font_color = Color(0.231373, 0.231373, 0.231373, 1)
+Button/colors/font_disabled_color = Color(0.709804, 0.709804, 0.709804, 1)
+Button/fonts/font = ExtResource("1_oca07")
+Button/styles/disabled = SubResource("StyleBoxFlat_fr5mm")
+Button/styles/focus = SubResource("StyleBoxFlat_s08h0")
+Button/styles/hover = ExtResource("2_mmqqh")
+Button/styles/normal = ExtResource("3_m0sj8")
+Button/styles/pressed = SubResource("StyleBoxFlat_hksyd")
+Label/colors/font_color = Color(0.231373, 0.231373, 0.231373, 1)
+Label/fonts/font = ExtResource("1_oca07")
+LineEdit/colors/caret_color = Color(0.239216, 0.239216, 0.239216, 1)
+LineEdit/colors/clear_button_color = Color(0.265599, 1, 0.90673, 1)
+LineEdit/colors/clear_button_color_pressed = Color(0.241156, 0.241156, 0.241156, 1)
+LineEdit/colors/font_color = Color(0.230315, 0.230315, 0.230315, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+LineEdit/colors/font_uneditable_color = Color(0.477966, 0.112295, 0, 1)
+LineEdit/colors/selection_color = Color(3.85046e-07, 0.766682, 0.800786, 1)
+LineEdit/fonts/font = ExtResource("1_oca07")
+LineEdit/styles/focus = ExtResource("3_m0sj8")
+LineEdit/styles/normal = ExtResource("3_m0sj8")
+LineEdit/styles/read_only = ExtResource("3_m0sj8")
+OptionButton/colors/font_color = Color(0.231373, 0.231373, 0.231373, 1)
+OptionButton/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+OptionButton/colors/font_focus_color = Color(0.231373, 0.231373, 0.231373, 1)
+OptionButton/constants/modulate_arrow = 1
+OptionButton/fonts/font = ExtResource("4_r1hyl")
+OptionButton/styles/disabled = ExtResource("3_m0sj8")
+OptionButton/styles/hover = ExtResource("5_gp7df")
+OptionButton/styles/normal = ExtResource("3_m0sj8")

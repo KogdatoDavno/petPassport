@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt3bohen8fmi2"]
+
+[ext_resource type="Script" path="res://scripts/ui_topbar.gd" id="1_g7wqq"]
+[ext_resource type="Theme" uid="uid://qugujeycrfoe" path="res://styles/main_theme.tres" id="1_qaawu"]
+
+[node name="topbar" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 65.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource("1_qaawu")
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+script = ExtResource("1_g7wqq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="menu" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Меню"
+
+[node name="settings" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Настройки"
+
+[node name="add" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Добавить запись"
+
+[connection signal="pressed" from="HBoxContainer/add" to="." method="_on_add_pressed"]

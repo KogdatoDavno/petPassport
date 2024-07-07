@@ -1,0 +1,636 @@
+[gd_scene load_steps=18 format=3 uid="uid://dlw817wnnxbug"]
+
+[ext_resource type="Theme" uid="uid://qugujeycrfoe" path="res://styles/main_theme.tres" id="1_pxu4m"]
+[ext_resource type="Script" path="res://scripts/ui_pet_card.gd" id="1_ugj3e"]
+[ext_resource type="StyleBox" uid="uid://hl7lbsdpel4v" path="res://styles/separator.tres" id="3_5x72t"]
+[ext_resource type="Texture2D" uid="uid://cc5p4246r3wql" path="res://icons/logo_192.png" id="3_r10tm"]
+[ext_resource type="FontFile" uid="uid://bjlbelhgesfqp" path="res://fonts/ttf/JetBrainsMono-Bold.ttf" id="4_2hebh"]
+[ext_resource type="FontFile" uid="uid://c7qp425ptyvew" path="res://fonts/ttf/JetBrainsMono-Regular.ttf" id="4_dkt14"]
+[ext_resource type="FontFile" uid="uid://bxgt0jqhv0x0i" path="res://fonts/ttf/JetBrainsMono-ExtraBold.ttf" id="4_sxbbd"]
+[ext_resource type="FontFile" uid="uid://b23rswim4tpw2" path="res://fonts/ttf/JetBrainsMono-Thin.ttf" id="5_755iv"]
+[ext_resource type="FontFile" uid="uid://cxq182qucbkis" path="res://fonts/ttf/JetBrainsMono-Italic.ttf" id="7_ungri"]
+[ext_resource type="FontFile" uid="uid://i8461d63fank" path="res://fonts/ttf/JetBrainsMono-BoldItalic.ttf" id="8_d2o7w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jgff"]
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_inm6a"]
+font = ExtResource("4_sxbbd")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3q7ug"]
+font = ExtResource("5_755iv")
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14fjq"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_mq41v"]
+font = ExtResource("4_2hebh")
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bq7g3"]
+font = ExtResource("5_755iv")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_vbxdi"]
+
+[node name="ui_pet_card" type="Control" groups=["pet_card"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pxu4m")
+script = ExtResource("1_ugj3e")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="name" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/name"]
+clip_children = 2
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7jgff")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/name/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("3_r10tm")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pet Passport"
+label_settings = SubResource("LabelSettings_inm6a")
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/name"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Предварительная версия"
+label_settings = SubResource("LabelSettings_3q7ug")
+horizontal_alignment = 2
+
+[node name="top_bar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="return" type="Button" parent="MarginContainer/VBoxContainer/top_bar"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "< Вернуться"
+
+[node name="edit" type="Button" parent="MarginContainer/VBoxContainer/top_bar"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Редактировать информацию"
+
+[node name="main_info" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="photo_container" type="PanelContainer" parent="MarginContainer/VBoxContainer/main_info"]
+clip_children = 2
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_14fjq")
+
+[node name="photo" type="TextureRect" parent="MarginContainer/VBoxContainer/main_info/photo_container"]
+clip_contents = true
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+stretch_mode = 3
+
+[node name="labels_container" type="VBoxContainer" parent="MarginContainer/VBoxContainer/main_info"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="name" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_mq41v")
+autowrap_mode = 3
+
+[node name="breed" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "breed"
+label_settings = SubResource("LabelSettings_bq7g3")
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+custom_minimum_size = Vector2(150, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/separator = ExtResource("3_5x72t")
+
+[node name="sex" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Пол:"
+
+[node name="date" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "Дата рождения: "
+
+[node name="color" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+layout_mode = 2
+text = "Окрас: "
+
+[node name="chip_id" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "ID чипа: "
+autowrap_mode = 2
+
+[node name="passport_id" type="Label" parent="MarginContainer/VBoxContainer/main_info/labels_container"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "ID паспорта: "
+autowrap_mode = 2
+
+[node name="adding_grid_cells_window" type="Window" parent="MarginContainer/VBoxContainer"]
+mode = 1
+title = "Добавить запись"
+initial_position = 2
+size = Vector2i(299, 159)
+visible = false
+wrap_controls = true
+unresizable = true
+borderless = true
+theme = SubResource("Theme_vbxdi")
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/adding_grid_cells_window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/adding_grid_cells_window"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -83.5
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer"]
+layout_mode = 2
+
+[node name="cells_type_label" type="Label" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Название"
+
+[node name="add_grid_cells_option" type="OptionButton" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 1
+popup/item_0/text = "+ Добавить обработку"
+popup/item_0/id = 0
+
+[node name="add_grid_cells_line_option" type="HBoxContainer" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="input_line" type="LineEdit" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/add_grid_cells_line_option"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="add_input" type="Button" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/add_grid_cells_line_option"]
+layout_mode = 2
+text = "Добавить"
+
+[node name="treatment_label" type="Label" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Тип обработки"
+
+[node name="treatment_option2" type="OptionButton" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "Внешняя"
+popup/item_0/id = 0
+popup/item_1/text = "Внутренняя"
+popup/item_1/id = 1
+
+[node name="date_line" type="HBoxContainer" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="day_of" type="Label" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/date_line"]
+layout_mode = 2
+text = "День: "
+
+[node name="DD" type="OptionButton" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/date_line"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 31
+allow_reselect = true
+popup/item_0/text = "1"
+popup/item_0/id = 0
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+popup/item_3/text = "4"
+popup/item_3/id = 3
+popup/item_4/text = "5"
+popup/item_4/id = 4
+popup/item_5/text = "6"
+popup/item_5/id = 5
+popup/item_6/text = "7"
+popup/item_6/id = 6
+popup/item_7/text = "8"
+popup/item_7/id = 7
+popup/item_8/text = "9"
+popup/item_8/id = 8
+popup/item_9/text = "10"
+popup/item_9/id = 9
+popup/item_10/text = "11"
+popup/item_10/id = 10
+popup/item_11/text = "12"
+popup/item_11/id = 11
+popup/item_12/text = "13"
+popup/item_12/id = 12
+popup/item_13/text = "14"
+popup/item_13/id = 13
+popup/item_14/text = "15"
+popup/item_14/id = 14
+popup/item_15/text = "16"
+popup/item_15/id = 15
+popup/item_16/text = "17"
+popup/item_16/id = 16
+popup/item_17/text = "18"
+popup/item_17/id = 17
+popup/item_18/text = "19"
+popup/item_18/id = 18
+popup/item_19/text = "20"
+popup/item_19/id = 19
+popup/item_20/text = "21"
+popup/item_20/id = 20
+popup/item_21/text = "22"
+popup/item_21/id = 21
+popup/item_22/text = "23"
+popup/item_22/id = 22
+popup/item_23/text = "24"
+popup/item_23/id = 23
+popup/item_24/text = "25"
+popup/item_24/id = 24
+popup/item_25/text = "26"
+popup/item_25/id = 25
+popup/item_26/text = "27"
+popup/item_26/id = 26
+popup/item_27/text = "28"
+popup/item_27/id = 27
+popup/item_28/text = "29"
+popup/item_28/id = 28
+popup/item_29/text = "30"
+popup/item_29/id = 29
+popup/item_30/text = "31"
+popup/item_30/id = 30
+
+[node name="month_of" type="Label" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/date_line"]
+layout_mode = 2
+text = "Месяц: "
+
+[node name="MM" type="OptionButton" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/date_line"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 12
+allow_reselect = true
+popup/item_0/text = "1"
+popup/item_0/id = 0
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+popup/item_3/text = "4"
+popup/item_3/id = 3
+popup/item_4/text = "5"
+popup/item_4/id = 4
+popup/item_5/text = "6"
+popup/item_5/id = 5
+popup/item_6/text = "7"
+popup/item_6/id = 6
+popup/item_7/text = "8"
+popup/item_7/id = 7
+popup/item_8/text = "9"
+popup/item_8/id = 8
+popup/item_9/text = "10"
+popup/item_9/id = 9
+popup/item_10/text = "11"
+popup/item_10/id = 10
+popup/item_11/text = "12"
+popup/item_11/id = 11
+
+[node name="year_of" type="Label" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/date_line"]
+layout_mode = 2
+text = "Год: "
+
+[node name="YY" type="OptionButton" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/date_line"]
+layout_mode = 2
+size_flags_horizontal = 3
+allow_reselect = true
+
+[node name="additioanal_label" type="Label" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Дополнительная информация"
+
+[node name="additional_line" type="LineEdit" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="control_buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="accept" type="Button" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/control_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Принять"
+
+[node name="cancel" type="Button" parent="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/control_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Отмена"
+
+[node name="med_info_buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="box1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/med_info_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="meds" type="Button" parent="MarginContainer/VBoxContainer/med_info_buttons/box1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "История обработок"
+
+[node name="vaccination" type="Button" parent="MarginContainer/VBoxContainer/med_info_buttons/box1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "История вакцинаций"
+
+[node name="box2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/med_info_buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="illness" type="Button" parent="MarginContainer/VBoxContainer/med_info_buttons/box2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "История болезней"
+
+[node name="suspects" type="Button" parent="MarginContainer/VBoxContainer/med_info_buttons/box2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Особые приметы"
+
+[node name="suspects_text" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_colors/selection_color = Color(0.266667, 1, 0.905882, 1)
+theme_override_fonts/normal_font = ExtResource("4_dkt14")
+theme_override_fonts/bold_font = ExtResource("4_2hebh")
+theme_override_fonts/italics_font = ExtResource("7_ungri")
+theme_override_fonts/bold_italics_font = ExtResource("8_d2o7w")
+theme_override_fonts/mono_font = ExtResource("5_755iv")
+fit_content = true
+
+[node name="grid_tag_and_button" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="top_bar" type="HBoxContainer" parent="MarginContainer/VBoxContainer/grid_tag_and_button"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="call_popup" type="Button" parent="MarginContainer/VBoxContainer/grid_tag_and_button/top_bar"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+text = "+"
+
+[node name="grid_tag" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/top_bar"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 36
+text = "Grid tag"
+
+[node name="meds_history_columns" type="GridContainer" parent="MarginContainer/VBoxContainer/grid_tag_and_button"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 15
+columns = 5
+
+[node name="num" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/meds_history_columns"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "#"
+
+[node name="date_of" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/meds_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Дата"
+
+[node name="name" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/meds_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Обработка"
+
+[node name="treatment" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/meds_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Тип обработки"
+
+[node name="additional" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/meds_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Дополнительно"
+
+[node name="vaccination_history_columns" type="GridContainer" parent="MarginContainer/VBoxContainer/grid_tag_and_button"]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 15
+columns = 4
+
+[node name="num" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/vaccination_history_columns"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "#"
+
+[node name="date_of" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/vaccination_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Дата"
+
+[node name="name" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/vaccination_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Вакцинация"
+
+[node name="additional" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/vaccination_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Дополнительно"
+
+[node name="illnesses_history_columns" type="GridContainer" parent="MarginContainer/VBoxContainer/grid_tag_and_button"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 15
+columns = 4
+
+[node name="num" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/illnesses_history_columns"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "#"
+
+[node name="date_of" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/illnesses_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Дата"
+
+[node name="name" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/illnesses_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Болезнь"
+
+[node name="additional" type="Label" parent="MarginContainer/VBoxContainer/grid_tag_and_button/illnesses_history_columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_2hebh")
+theme_override_font_sizes/font_size = 16
+text = "Дополнительно"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="grids_control" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="meds_history" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/grids_control"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="vaccination_history" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/grids_control"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="illness_history" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer/grids_control"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 10
+columns = 4
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/top_bar/return" to="." method="_on_return_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/add_grid_cells_option" to="." method="_on_add_grid_cells_option_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/add_grid_cells_line_option/add_input" to="." method="_on_add_input_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/control_buttons/accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/adding_grid_cells_window/MarginContainer/VBoxContainer/control_buttons/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/med_info_buttons/box1/meds" to="." method="_on_meds_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/med_info_buttons/box1/vaccination" to="." method="_on_vaccination_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/med_info_buttons/box2/illness" to="." method="_on_illness_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/med_info_buttons/box2/suspects" to="." method="_on_suspects_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/grid_tag_and_button/top_bar/call_popup" to="." method="_on_call_popup_pressed"]
